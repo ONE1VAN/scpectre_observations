@@ -40,21 +40,8 @@ function createFooter() {
   `;
 }
 
-const categories = [
-  { id: 'index', title: 'Works', href: 'index.html' },
-  { id: 'flags', title: 'Flags', href: 'flags.html' },
-  { id: 'forest-game', title: 'Forest Game', href: 'forest-game.html' },
-  { id: 'foundators', title: 'Foundators', href: 'foundators.html' },
-  { id: 'ghillie-suit', title: 'Ghillie Suit', href: 'ghillie-suit.html' },
-  { id: 'miltec', title: 'Miltec', href: 'miltec.html' },
-  { id: 'night-game', title: 'Night Game', href: 'night-game.html' },
-  { id: 'sniper-rifle', title: 'Sniper Rifle', href: 'sniper-rifle.html' },
-  { id: 'sqb', title: 'SQB', href: 'sqb.html' },
-  { id: 'the-best-programmer', title: 'The Best Programmer', href: 'the-best-programmer.html' }
-];
-
 function getSectionCategories() {
-  return categories.filter((cat) => cat.id !== 'index');
+  return sections.filter((cat) => cat.id !== 'index');
 }
 
 function initNavigation() {

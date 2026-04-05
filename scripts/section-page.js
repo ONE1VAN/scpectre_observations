@@ -1,22 +1,10 @@
-const sections = {
-  'flags': { title: 'Flags', folder: 'flags', count: 7 },
-  'forest-game': { title: 'Forest Game', folder: 'forest game', count: 8 },
-  'foundators': { title: 'Foundators', folder: 'foundators', count: 9 },
-  'ghillie-suit': { title: 'Ghillie Suit', folder: 'ghillie suit', count: 11 },
-  'miltec': { title: 'Miltec', folder: 'miltec', count: 8 },
-  'night-game': { title: 'Night Game', folder: 'night game', count: 6 },
-  'sniper-rifle': { title: 'Sniper Rifle', folder: 'sniper rifle', count: 5 },
-  'sqb': { title: 'SQB', folder: 'SQB', count: 9 },
-  'the-best-programmer': { title: 'The Best Programmer', folder: 'the best programmer', count: 6 }
-};
-
 function getPhotoUrl(folder, index) {
   return `images/${encodeURIComponent(folder)}/pic%20${index}.jpg`;
 }
 
 function getCurrentSection() {
   const fileName = window.location.pathname.split('/').pop().replace('.html', '');
-  return sections[fileName] ? fileName : null;
+  return sections.find(s => s.id === fileName);
 }
 
 function setupModal() {
@@ -60,7 +48,7 @@ function renderGallery() {
   const currentSection = getCurrentSection();
   if (!currentSection) return;
 
-  const section = sections[currentSection];
+  const section = currentSection;
   const gallery = document.getElementById('gallery');
   if (!gallery) return;
 
@@ -88,10 +76,10 @@ function renderPageTitle() {
 
   const titleElement = document.querySelector('.section-title');
   if (titleElement) {
-    titleElement.textContent = sections[currentSection].title;
+    titleElement.textContent = currentSection.title;
   }
 
-  document.title = `${sections[currentSection].title} - Spectre Observations`;
+  document.title = `${currentSection.title} - Spectre Observations`;
 }
 
 function initSectionPage() {
